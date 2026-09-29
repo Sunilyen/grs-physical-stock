@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { createClient } from "@/lib/supabaseClient";
+import { createClient } from "@/lib/supabase/client";
 
 interface CounterStatus {
   counter_id: string;
@@ -103,7 +103,7 @@ export default function ManagerDashboard() {
           Manager Dashboard
         </h1>
         <p className="text-sm text-gray-500 mt-1">
-          Daily counter submission status —{" "}
+          Daily counter submission status â€”{" "}
           {new Date().toLocaleDateString("en-US", {
             weekday: "long",
             year: "numeric",
@@ -274,7 +274,7 @@ export default function ManagerDashboard() {
                   <td className="px-4 py-3 text-sm text-gray-500 text-right">
                     {counter.submitted_at
                       ? new Date(counter.submitted_at).toLocaleTimeString()
-                      : "—"}
+                      : "â€”"}
                   </td>
                 </tr>
               ))}
@@ -285,3 +285,4 @@ export default function ManagerDashboard() {
     </div>
   );
 }
+

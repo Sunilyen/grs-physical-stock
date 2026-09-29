@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { use, useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import PhysicalStockEntry, { SKUItem } from "@/components/PhysicalStockEntry";
@@ -10,7 +10,7 @@ export default function StockCountPage({
 }: {
   params: Promise<{ counterId: string }>;
 }) {
-  const { counterId } = params;
+  const { counterId } = use(params);
   const router = useRouter();
   const supabase = createClient();
 
@@ -204,3 +204,4 @@ export default function StockCountPage({
     </div>
   );
 }
+

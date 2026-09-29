@@ -1,4 +1,4 @@
-import { createServerClient } from "@/lib/supabaseClient";
+﻿import { createClient } from "@/lib/supabase/server";
 import StockCountForm from "@/components/StockCountForm";
 import { redirect } from "next/navigation";
 
@@ -9,8 +9,8 @@ export default async function CounterPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
-  const supabase = createServerClient();
+  const { id } = await params;
+  const supabase = await createClient();
 
   // Fetch counter name
   const { data: counter, error } = await supabase
@@ -29,3 +29,5 @@ export default async function CounterPage({
     </div>
   );
 }
+
+

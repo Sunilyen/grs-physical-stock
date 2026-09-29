@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { createClient } from "@/lib/supabaseClient";
+import { createClient } from "@/lib/supabase/client";
 
 interface StockCountFormProps {
   counterId: string;
@@ -470,3 +470,4 @@ export default function StockCountForm({
     </div>
   );
 }
+

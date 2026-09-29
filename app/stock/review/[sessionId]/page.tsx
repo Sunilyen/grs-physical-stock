@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { use, useEffect, useState, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
@@ -36,7 +36,7 @@ export default function StockReviewPage({
 }: {
   params: Promise<{ sessionId: string }>;
 }) {
-  const { sessionId } = params;
+  const { sessionId } = use(params);
   const router = useRouter();
   const supabase = createClient();
 
@@ -134,19 +134,19 @@ export default function StockReviewPage({
             onClick={() => router.push("/stock/today")}
             className="mb-2 text-sm text-gray-500 hover:text-gray-700"
           >
-            ← Back to Counter Selection
+            â† Back to Counter Selection
           </button>
           <h1 className="text-2xl font-bold text-gray-900">
             {session.counter?.counter_name ?? "Stock Count Review"}
           </h1>
           <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-500">
             <span>Business Date: {session.business_date}</span>
-            <span>•</span>
+            <span>â€¢</span>
             <span>
               Submitted:{" "}
               {session.submitted_at
                 ? new Date(session.submitted_at).toLocaleString()
-                : "—"}
+                : "â€”"}
             </span>
             <span
               className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${
@@ -233,3 +233,4 @@ export default function StockReviewPage({
     </div>
   );
 }
+

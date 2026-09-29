@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { use, useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import PhysicalStockEntry, { SKUItem } from "@/components/PhysicalStockEntry";
@@ -11,7 +11,7 @@ export default function StockCountDetailPage({
 }: {
     params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = use(params);
   const [session, setSession] = useState<SessionWithDetails | null>(null);
   const [mappedItems, setMappedItems] = useState<SKUItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -189,7 +189,7 @@ export default function StockCountDetailPage({
             onClick={() => router.push("/stock-count")}
             className="mb-2 text-sm text-gray-500 hover:text-gray-700"
           >
-            ← Back to Sessions
+            â† Back to Sessions
           </button>
           <h1 className="text-2xl font-bold text-gray-900">
             {session.counter?.counter_name ?? "Stock Count"}
@@ -253,3 +253,5 @@ export default function StockCountDetailPage({
     </div>
   );
 }
+
+
